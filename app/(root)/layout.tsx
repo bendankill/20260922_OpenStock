@@ -15,6 +15,8 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         id: session.user.id,
         name: session.user.name,
         email: session.user.email,
+        username: session.user.username,
+        displayUsername: session.user.displayUsername,
     }
 
     return (

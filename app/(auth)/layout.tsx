@@ -24,7 +24,7 @@ const Layout = async ({ children }: { children : React.ReactNode }) => {
             <section className="auth-right-section">
                 <div className="z-10 relative lg:mt-4 lg:mb-16">
                     <blockquote className="auth-blockquote">
-                        “For me, OpenStock isn’t just another stock app. It’s about giving people clarity and control in the market, without barriers or subscriptions.”
+                        “对我来说，OpenStock 不只是另一个股票应用。它让每个人都能没有门槛、无需订阅地看清并掌控市场。”
                     </blockquote>
                     <div className="flex items-center justify-between">
                         <div>

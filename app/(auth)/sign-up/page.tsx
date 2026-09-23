@@ -3,12 +3,10 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
-import SelectField from "@/components/forms/SelectField";
 import PasswordRequirements from "@/components/forms/PasswordRequirements";
-import { INVESTMENT_GOALS, PASSWORD_VALIDATION, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
-import { CountrySelectField } from "@/components/forms/CountrySelectField";
+import { ACCOUNT_VALIDATION, PASSWORD_VALIDATION } from "@/lib/constants";
 import FooterLink from "@/components/forms/FooterLink";
-import { signUpWithEmail } from "@/lib/actions/auth.actions";
+import { signUpWithAccount } from "@/lib/actions/auth.actions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import OpenDevSocietyBranding from "@/components/OpenDevSocietyBranding";
@@ -19,18 +17,12 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
-        control,
         watch,
         formState: { errors, isSubmitting },
     } = useForm<SignUpFormData>({
         defaultValues: {
-            fullName: '',
-            email: '',
+            account: '',
             password: '',
-            country: 'IN',
-            investmentGoals: 'Growth',
-            riskTolerance: 'Medium',
-            preferredIndustry: 'Technology'
         },
         mode: 'onBlur'
     },);
@@ -39,55 +31,40 @@ const SignUp = () => {
 
     const onSubmit = async (data: SignUpFormData) => {
         try {
-            const result = await signUpWithEmail(data);
+            const result = await signUpWithAccount(data);
             if (result.success) {
                 router.push('/');
                 return;
             }
-            toast.error('Sign up failed', {
-                description: result.error ?? 'We could not create your account.',
+            toast.error('注册失败', {
+                description: result.error ?? '无法创建账号，请稍后重试。',
             });
         } catch (e) {
             console.error(e);
-            toast.error('Sign up failed', {
-                description: e instanceof Error ? e.message : 'Failed to create an account.'
+            toast.error('注册失败', {
+                description: e instanceof Error ? e.message : '无法创建账号，请稍后重试。'
             })
         }
     }
 
     return (
         <>
-            <h1 className="form-title">Sign Up & Personalize</h1>
+            <h1 className="form-title">创建账号</h1>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <InputField
-                    name="fullName"
-                    label="Full Name"
-                    placeholder="Enter full name"
+                    name="account"
+                    label="账号"
+                    placeholder="请输入账号"
                     register={register}
-                    error={errors.fullName}
-                    validation={{ required: 'Full name is required', minLength: 2 }}
-                />
-
-                <InputField
-                    name="email"
-                    label="Email"
-                    placeholder="opendevsociety@cc.cc"
-                    register={register}
-                    error={errors.email}
-                    validation={{
-                        required: 'Email is required',
-                        pattern: {
-                            value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
-                            message: 'Please enter a valid email address'
-                        }
-                    }}
+                    error={errors.account}
+                    validation={ACCOUNT_VALIDATION}
                 />
 
                 <InputField
                     name="password"
-                    label="Password"
-                    placeholder="Enter a strong password"
+                    label="密码"
+                    placeholder="请输入密码"
                     type="password"
                     register={register}
                     error={errors.password}
@@ -95,49 +72,11 @@ const SignUp = () => {
                 />
                 <PasswordRequirements password={passwordValue ?? ''} />
 
-                <CountrySelectField
-                    name="country"
-                    label="Country"
-                    control={control}
-                    error={errors.country}
-                    required
-                />
-
-                <SelectField
-                    name="investmentGoals"
-                    label="Investment Goals"
-                    placeholder="Select your investment goal"
-                    options={INVESTMENT_GOALS}
-                    control={control}
-                    error={errors.investmentGoals}
-                    required
-                />
-
-                <SelectField
-                    name="riskTolerance"
-                    label="Risk Tolerance"
-                    placeholder="Select your risk level"
-                    options={RISK_TOLERANCE_OPTIONS}
-                    control={control}
-                    error={errors.riskTolerance}
-                    required
-                />
-
-                <SelectField
-                    name="preferredIndustry"
-                    label="Preferred Industry"
-                    placeholder="Select your preferred industry"
-                    options={PREFERRED_INDUSTRIES}
-                    control={control}
-                    error={errors.preferredIndustry}
-                    required
-                />
-
                 <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
-                    {isSubmitting ? 'Creating Account' : 'Start Your Investing Journey'}
+                    {isSubmitting ? '正在创建账号' : '注册并进入 OpenStock'}
                 </Button>
 
-                <FooterLink text="Already have an account?" linkText="Sign in" href="/sign-in" />
+                <FooterLink text="已有账号？" linkText="登录" href="/sign-in" />
 
                 <OpenDevSocietyBranding outerClassName="mt-10 flex justify-center" />
                 <div className="mt-5 flex justify-center">

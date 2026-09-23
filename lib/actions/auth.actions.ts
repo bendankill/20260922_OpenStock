@@ -1,48 +1,90 @@
 'use server';
 
 import { auth } from "@/lib/better-auth/auth";
-import { inngest } from "@/lib/inngest/client";
 import { headers } from "next/headers";
+import {
+    generateInternalEmail,
+    PASSWORD_MAX_LENGTH,
+    PASSWORD_MIN_LENGTH,
+    validateAccount,
+} from "@/lib/auth/account";
 
-export const signUpWithEmail = async ({ email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry }: SignUpFormData) => {
-    try {
-        const response = await auth.api.signUpEmail({ body: { email, password, name: fullName } })
+const AUTH_ERROR_MESSAGES: Record<string, string> = {
+    "User already exists.": "账号已存在",
+    "User already exists. Use another email.": "账号已存在",
+    "Username is already taken. Please try another.": "账号已存在",
+    "Password is too short": `密码长度至少为 ${PASSWORD_MIN_LENGTH} 位`,
+    "Password is too long": `密码长度最多为 ${PASSWORD_MAX_LENGTH} 位`,
+    "Username is too short": "账号至少 2 个字符",
+    "Username is too long": "账号最多 32 个字符",
+    "Username is invalid": "账号格式不正确",
+    "Invalid email": "账号格式不正确",
+    "Invalid username or password": "账号或密码错误",
+    "Invalid email or password": "账号或密码错误",
+};
 
-        if (response) {
-            try {
-                console.log('📤 Sending Inngest event: app/user.created for', email);
-                await inngest.send({
-                    name: 'app/user.created',
-                    data: { email, name: fullName, country, investmentGoals, riskTolerance, preferredIndustry }
-                });
-                console.log('✅ Inngest event sent successfully');
-            } catch (error) {
-                console.error('❌ Failed to send Inngest event:', error);
-                // Don't fail signup if email fails
-            }
-        }
-
-        return { success: true, data: response }
-    } catch (e) {
-        console.log('Sign up failed', e)
-        return { success: false, error: 'Sign up failed' }
-    }
+// 只把可理解的中文错误返回给浏览器；真实异常完整记录在服务端日志
+function translateAuthError(error: unknown, fallback: string): string {
+    const message = error instanceof Error ? error.message : "";
+    return AUTH_ERROR_MESSAGES[message] ?? fallback;
 }
 
-export const signInWithEmail = async ({ email, password }: SignInFormData) => {
+export const signUpWithAccount = async ({ account, password }: SignUpFormData) => {
     try {
-        const response = await auth.api.signInEmail({ body: { email, password } })
+        const validation = validateAccount(account);
+        if (!validation.ok) {
+            return { success: false, error: validation.error };
+        }
+        if (password.length < PASSWORD_MIN_LENGTH) {
+            return { success: false, error: `密码长度至少为 ${PASSWORD_MIN_LENGTH} 位` };
+        }
+        if (password.length > PASSWORD_MAX_LENGTH) {
+            return { success: false, error: `密码长度最多为 ${PASSWORD_MAX_LENGTH} 位` };
+        }
 
-        // Update lastActiveAt
-        if (response) {
+        const internalEmail = generateInternalEmail(validation.normalized);
+
+        const response = await auth.api.signUpEmail({
+            body: {
+                email: internalEmail,
+                password,
+                name: validation.display,
+                username: validation.account,
+                displayUsername: validation.display,
+            },
+        });
+
+        return { success: true, data: response };
+    } catch (error) {
+        console.error("[signUpWithAccount] failed:", error);
+        return { success: false, error: translateAuthError(error, "注册失败，请查看服务器日志") };
+    }
+};
+
+export const signInWithAccount = async ({ account, password }: SignInFormData) => {
+    try {
+        const validation = validateAccount(account);
+        if (!validation.ok) {
+            return { success: false, error: validation.error };
+        }
+
+        const response = await auth.api.signInUsername({
+            body: {
+                username: validation.normalized,
+                password,
+            },
+        });
+
+        if (response?.user?.id) {
             try {
-                // Dynamic import or ensure path is correct
                 const { connectToDatabase } = await import("@/database/mongoose");
+                const { ObjectId } = await import("mongodb");
                 const mongoose = await connectToDatabase();
                 const db = mongoose.connection.db;
                 if (db) {
+                    // better-auth 的 user 集合以 ObjectId 作为 _id（适配器视图中的 id 字符串 = _id 的字符串形式）
                     await db.collection('user').updateOne(
-                        { email },
+                        { _id: new ObjectId(response.user.id) },
                         { $set: { lastActiveAt: new Date() } }
                     );
                 }
@@ -51,69 +93,18 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
             }
         }
 
-        return { success: true, data: response }
-    } catch (e) {
-        console.log('Sign in failed', e)
-        return { success: false, error: 'Sign in failed' }
+        return { success: true, data: response };
+    } catch (error) {
+        console.error("[signInWithAccount] failed:", error);
+        return { success: false, error: translateAuthError(error, "登录失败，请查看服务器日志") };
     }
-}
-
-export const requestPasswordResetEmail = async ({ email }: { email: string }) => {
-    if (!process.env.NODEMAILER_EMAIL || !process.env.NODEMAILER_PASSWORD) {
-        return { success: false, error: 'Password reset email is not configured.' }
-    }
-
-    try {
-        const configuredBaseUrl = process.env.BETTER_AUTH_URL;
-        const baseUrl = configuredBaseUrl || (
-            process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : null
-        );
-
-        if (!baseUrl) {
-            return {
-                success: false,
-                error: 'BETTER_AUTH_URL must be configured before password reset emails can be sent.',
-            }
-        }
-
-        await auth.api.requestPasswordReset({
-            body: {
-                email,
-                redirectTo: `${baseUrl}/reset-password`,
-            },
-        });
-
-        return { success: true }
-    } catch (e) {
-        console.log('Password reset request failed', e)
-        return { success: false, error: 'Unable to send password reset email.' }
-    }
-}
-
-export const resetPasswordWithToken = async (
-    { token, newPassword }: { token: string; newPassword: string }
-) => {
-    try {
-        await auth.api.resetPassword({
-            body: {
-                token,
-                newPassword,
-            },
-        });
-
-        return { success: true }
-    } catch (e) {
-        console.log('Password reset failed', e)
-        return { success: false, error: 'Reset link is invalid or expired.' }
-    }
-}
+};
 
 export const signOut = async () => {
     try {
         await auth.api.signOut({ headers: await headers() });
-    } catch (e) {
-        console.log('Sign out failed', e)
-        return { success: false, error: 'Sign out failed' }
+    } catch (error) {
+        console.error("[signOut] failed:", error);
+        return { success: false, error: "退出登录失败，请重试" };
     }
-}
-
+};

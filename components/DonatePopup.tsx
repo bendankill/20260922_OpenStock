@@ -68,15 +68,15 @@ export default function DonatePopup() {
                             <Heart className="h-6 w-6 text-teal-400 fill-teal-400" />
                         </div>
                         <DialogTitle className="text-2xl font-bold text-gray-100">
-                            Keep OpenStock Free
+                            让 OpenStock 保持免费
                         </DialogTitle>
                     </div>
                     <DialogDescription className="text-gray-400 text-base leading-relaxed pt-2">
-                        Your overwhelming love for OpenStock and Open Dev Society has helped us grow, 
-                        but we're hitting Vercel's free tier limits. 
+                        大家对 OpenStock 和 Open Dev Society 的热爱帮助我们不断成长，
+                        但我们正在接近 Vercel 免费额度的上限。
                         <br /><br />
-                        Help us keep OpenStock free and accessible for everyone by supporting us on GitHub Sponsors. 
-                        Every contribution, no matter how small, makes a difference! 💙
+                        请通过 GitHub Sponsors 支持我们，让 OpenStock 对所有人保持免费可用。
+                        每一份贡献，无论大小，都意义非凡！💙
                     </DialogDescription>
                 </DialogHeader>
 
@@ -86,19 +86,19 @@ export default function DonatePopup() {
                         className="flex-1 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold h-11 transition-all duration-200 transform hover:scale-105"
                     >
                         <Github className="h-4 w-4 mr-2" />
-                        Sponsor on GitHub
+                        在 GitHub 上赞助
                     </Button>
                     <Button
                         onClick={handleDismiss}
                         variant="outline"
                         className="flex-1 border-teal-600/50 text-teal-400 hover:bg-teal-600/10 hover:text-teal-300 h-11 transition-all duration-200"
                     >
-                        Maybe Later
+                        以后再说
                     </Button>
                 </div>
 
                 <p className="text-xs text-gray-500 text-center mt-4">
-                    This popup won't appear again for 24 hours after dismissing
+                    关闭后 24 小时内不再显示此弹窗
                 </p>
             </DialogContent>
         </Dialog>

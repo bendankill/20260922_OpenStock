@@ -41,7 +41,7 @@ export default function WatchlistManager({ initialItems, userId }: WatchlistMana
             <div className="bg-gray-900/30 rounded-xl border border-gray-800 p-4 backdrop-blur-sm">
                 <div className="flex items-center justify-between mb-3">
                     <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider flex items-center">
-                        <span className="mr-2">Manage Symbols</span>
+                        <span className="mr-2">管理股票</span>
                         <span className="text-xs bg-gray-800 text-gray-500 px-2 py-0.5 rounded-full">
                             {watchlistSymbols.length}
                         </span>
@@ -53,10 +53,10 @@ export default function WatchlistManager({ initialItems, userId }: WatchlistMana
                         className="h-8 px-2 text-gray-400 hover:text-white hover:bg-white/10"
                         title={
                             sortOrder === 'asc'
-                                ? 'Sorted A-Z'
+                                ? '已按 A-Z 排序'
                                 : sortOrder === 'desc'
-                                    ? 'Sorted Z-A'
-                                    : 'Default Order'
+                                    ? '已按 Z-A 排序'
+                                    : '默认顺序'
                         }
                     >
                         {sortOrder === 'asc' && <ArrowDownAZ className="w-4 h-4 mr-2" />}
@@ -67,7 +67,7 @@ export default function WatchlistManager({ initialItems, userId }: WatchlistMana
                                 ? 'A-Z'
                                 : sortOrder === 'desc'
                                     ? 'Z-A'
-                                    : 'Sort'}
+                                    : '排序'}
                         </span>
                     </Button>
                 </div>
@@ -83,7 +83,7 @@ export default function WatchlistManager({ initialItems, userId }: WatchlistMana
                         ))}
                     </div>
                 ) : (
-                    <p className="text-sm text-gray-500 italic">No stocks in watchlist.</p>
+                    <p className="text-sm text-gray-500 italic">自选股为空。</p>
                 )}
             </div>
 

@@ -20,11 +20,11 @@ export default function SirayBanner() {
                             <img src="/assets/icons/siray.svg" alt="Siray.ai Logo" className="h-7 w-auto" />
                         </div>
                         <span className="text-teal-100 font-medium tracking-wide">
-                            • Reliably backed by <span className="text-[#20c997] font-bold">Siray.ai</span>
+                            • 由 <span className="text-[#20c997] font-bold">Siray.ai</span> 可靠支撑
                         </span>
                     </Link>
                     <span className="hidden sm:inline text-teal-300/60 text-xs border-l border-teal-800/50 pl-3">
-                        Ensuring 100% AI uptime for your market insights
+                        为你的市场洞察确保 100% AI 在线
                     </span>
                 </div>
 

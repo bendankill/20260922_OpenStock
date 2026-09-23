@@ -1,0 +1,17 @@
+# 本地环境与 Secret，禁止进入 build context / image layer
+.env
+.env.*
+.claude
+
+# Git
+.git
+.gitignore
+
+# 依赖与构建产物
+node_modules
+.next
+coverage
+*.log
+
+# IDE
+.idea

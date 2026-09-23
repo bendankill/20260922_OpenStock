@@ -64,8 +64,8 @@ export default function WatchlistTable({ data, userId, onRefresh }: WatchlistTab
     if (!stocks || stocks.length === 0) {
         return (
             <div className="text-center py-12 bg-gray-900/50 rounded-lg border border-gray-800">
-                <h3 className="text-xl font-medium text-gray-300 mb-2">Your watchlist is empty</h3>
-                <p className="text-gray-500 mb-6">Add stocks to track their performance and set alerts.</p>
+                <h3 className="text-xl font-medium text-gray-300 mb-2">你的自选股是空的</h3>
+                <p className="text-gray-500 mb-6">添加股票以跟踪表现并设置提醒。</p>
             </div>
         );
     }
@@ -75,12 +75,12 @@ export default function WatchlistTable({ data, userId, onRefresh }: WatchlistTab
             <table className="w-full text-left text-sm border-collapse">
                 <thead className="bg-white/5 text-gray-400 font-medium border-b border-white/10">
                     <tr>
-                        <th className="px-6 py-4 font-semibold tracking-wide">Company</th>
-                        <th className="px-6 py-4 font-semibold tracking-wide">Symbol</th>
-                        <th className="px-6 py-4 font-semibold tracking-wide">Price</th>
-                        <th className="px-6 py-4 font-semibold tracking-wide">Change</th>
-                        <th className="px-6 py-4 font-semibold tracking-wide">Market Cap</th>
-                        <th className="px-6 py-4 text-right font-semibold tracking-wide">Actions</th>
+                        <th className="px-6 py-4 font-semibold tracking-wide">公司</th>
+                        <th className="px-6 py-4 font-semibold tracking-wide">代码</th>
+                        <th className="px-6 py-4 font-semibold tracking-wide">价格</th>
+                        <th className="px-6 py-4 font-semibold tracking-wide">涨跌</th>
+                        <th className="px-6 py-4 font-semibold tracking-wide">市值</th>
+                        <th className="px-6 py-4 text-right font-semibold tracking-wide">操作</th>
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-white/10">
@@ -134,7 +134,7 @@ export default function WatchlistTable({ data, userId, onRefresh }: WatchlistTab
                                             currentPrice={stock.price}
                                             onAlertCreated={onRefresh}
                                         >
-                                            <button className="p-2.5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10" title="Add Alert">
+                                            <button className="p-2.5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/10" title="添加提醒">
                                                 <Bell className="w-4.5 h-4.5" />
                                             </button>
                                         </CreateAlertModal>

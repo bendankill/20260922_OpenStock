@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import { zhCN } from "date-fns/locale";
 import { ExternalLink } from "lucide-react";
 
 interface NewsGridProps {
@@ -14,7 +15,7 @@ export default function NewsGrid({ news }: NewsGridProps) {
 
     return (
         <div className="mt-8">
-            <h2 className="text-xl font-bold text-white mb-4">Market News</h2>
+            <h2 className="text-xl font-bold text-white mb-4">市场新闻</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {news.map((item, idx) => (
                     <a
@@ -28,7 +29,7 @@ export default function NewsGrid({ news }: NewsGridProps) {
                             <div className="flex items-start justify-between mb-2">
                                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${item.related ? "bg-blue-900/50 text-blue-300" : "bg-gray-800 text-gray-400"
                                     }`}>
-                                    {item.related || "MARKET"}
+                                    {item.related || "市场"}
                                 </span>
                                 <ExternalLink className="w-3 h-3 text-gray-600 group-hover:text-gray-400" />
                             </div>
@@ -41,7 +42,7 @@ export default function NewsGrid({ news }: NewsGridProps) {
                             <div className="flex items-center justify-between text-[10px] text-gray-600 mt-auto">
                                 <span>{item.source}</span>
                                 <span>
-                                    {item.datetime ? formatDistanceToNow(item.datetime * 1000, { addSuffix: true }) : ''}
+                                    {item.datetime ? formatDistanceToNow(item.datetime * 1000, { addSuffix: true, locale: zhCN }) : ''}
                                 </span>
                             </div>
                         </div>

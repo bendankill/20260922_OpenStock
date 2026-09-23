@@ -17,8 +17,8 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'API & Architecture | OpenStock',
-  description: 'Technical documentation for OpenStock architecture, AI integrations, and background jobs.',
+  title: 'API 与架构 | OpenStock',
+  description: 'OpenStock 架构、AI 集成与后台任务的技术文档。',
 };
 
 export default function ApiDocsPage() {
@@ -37,16 +37,16 @@ export default function ApiDocsPage() {
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-          OpenStock Architecture
+          OpenStock 架构
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-          A transparent look at the event-driven, multi-provider system powering your market insights.
+          透明地了解驱动你市场洞察的事件驱动、多提供商系统。
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 pt-2">
-          <Badge color="green">v1.0.0 Active</Badge>
+          <Badge color="green">v1.0.0 运行中</Badge>
           <Badge color="purple">Gemini + Siray AI</Badge>
-          <Badge color="blue">Open Source AGPL-3.0</Badge>
+          <Badge color="blue">开源 AGPL-3.0</Badge>
         </div>
       </section>
 
@@ -55,11 +55,11 @@ export default function ApiDocsPage() {
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <Cpu className="text-teal-400 h-8 w-8" />
-            <h2 className="text-3xl font-bold text-gray-100">Intelligent UI</h2>
+            <h2 className="text-3xl font-bold text-gray-100">智能 UI</h2>
           </div>
           <p className="text-gray-400 leading-relaxed">
-            We prioritize uptime for generative features (Welcome Emails, News Summaries) using a robust
-            multi-provider strategy. Our system automatically routes around outages.
+            我们通过稳健的多提供商策略，优先保障生成式功能（欢迎邮件、新闻摘要）的可用性。
+            系统会自动绕过故障路由。
           </p>
 
           <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 space-y-4">
@@ -69,11 +69,11 @@ export default function ApiDocsPage() {
               </div>
               <div>
                 <h3 className="text-white font-semibold flex items-center gap-2">
-                  Primary: Google Gemini
+                  首选：Google Gemini
                   <span className="text-[10px] bg-teal-500/10 text-teal-400 px-2 py-0.5 rounded-full border border-teal-500/20">Flash Lite 2.5</span>
                 </h3>
                 <p className="text-sm text-gray-500 mt-1">
-                  Handles high-volume inference for news summarization and personalization.
+                  处理新闻摘要与个性化的大批量推理。
                 </p>
               </div>
             </div>
@@ -86,11 +86,11 @@ export default function ApiDocsPage() {
               </div>
               <div>
                 <h3 className="text-white font-semibold flex items-center gap-2">
-                  Fallback: Siray.ai
+                  备选：Siray.ai
                   <span className="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/20">Ultra 1.0</span>
                 </h3>
                 <p className="text-sm text-gray-500 mt-1">
-                  Instant failover protection. If Gemini wavers, Siray takes over to ensure zero dropped requests.
+                  即时故障转移保护。若 Gemini 不稳定，Siray 立即接管，确保零丢失请求。
                 </p>
               </div>
             </div>
@@ -104,19 +104,19 @@ export default function ApiDocsPage() {
           {/* Visual Flowchart */}
           <div className="relative z-10 flex flex-col items-center gap-6 w-full max-w-sm">
             <div className="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-700 w-full text-center">
-              User Action / Cron Job
+              用户操作 / 定时任务
             </div>
             <div className="h-6 w-px bg-gray-700" />
             <div className="bg-gray-800 p-4 rounded-xl border border-gray-600 w-full flex flex-col gap-3 relative shadow-2xl">
               <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-1 h-12 bg-teal-500 rounded-full" />
               <span className="text-xs font-mono text-teal-500 mb-1">Inngest Function</span>
               <div className="flex items-center justify-between text-sm text-gray-200 bg-black/40 p-2 rounded border border-gray-700">
-                <span>Attempt Gemini</span>
+                <span>尝试 Gemini</span>
                 <CheckCircle2 size={14} className="text-teal-500" />
               </div>
               <div className="flex items-center justify-between text-sm text-gray-200 bg-blue-900/20 p-2 rounded border border-blue-800/50">
                 <span className="flex items-center gap-2">
-                  Fallback to Siray
+                  回退到 Siray
                   <ShieldCheck size={12} className="text-blue-400" />
                 </span>
                 <ArrowRight size={14} className="text-blue-400" />
@@ -124,7 +124,7 @@ export default function ApiDocsPage() {
             </div>
             <div className="h-6 w-px bg-gray-700" />
             <div className="bg-green-900/20 text-green-400 px-4 py-2 rounded-lg text-sm border border-green-900/50 w-full text-center font-medium">
-              Content Delivered
+              内容已送达
             </div>
           </div>
         </div>
@@ -134,36 +134,36 @@ export default function ApiDocsPage() {
       <section>
         <div className="flex items-center gap-3 mb-6">
           <Server className="text-purple-400 h-8 w-8" />
-          <h2 className="text-3xl font-bold text-gray-100">Serverless Infrastructure</h2>
+          <h2 className="text-3xl font-bold text-gray-100">Serverless 基础设施</h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           <JobCard
             icon={<Mail size={20} />}
-            title="Sign Up Email"
-            trigger="Event"
-            desc="Generates personalized welcome/onboarding email via AI."
+            title="注册邮件"
+            trigger="事件触发"
+            desc="通过 AI 生成个性化欢迎/引导邮件。"
             color="purple"
           />
           <JobCard
             icon={<BarChart2 size={20} />}
-            title="Weekly News"
-            trigger="Cron: Mon 9am"
-            desc="Summarizes market news and broadcasts via ConvertKit."
+            title="每周新闻"
+            trigger="定时：周一 9 点"
+            desc="总结市场新闻并通过 ConvertKit 广播。"
             color="teal"
           />
           <JobCard
             icon={<Clock size={20} />}
-            title="Stock Alerts"
-            trigger="Cron: 5m"
-            desc="Checks user price targets against real-time data."
+            title="股票提醒"
+            trigger="定时：每 5 分钟"
+            desc="对照实时数据检查用户目标价。"
             color="yellow"
           />
           <JobCard
             icon={<AlertTriangle size={20} />}
-            title="Re-engagement"
-            trigger="Cron: Daily"
-            desc="Identifies dormant users and sends nudges."
+            title="用户召回"
+            trigger="定时：每天"
+            desc="识别沉默用户并发送提醒。"
             color="red"
           />
         </div>
@@ -173,23 +173,23 @@ export default function ApiDocsPage() {
       <section className="space-y-6">
         <div className="flex items-center gap-3">
           <Database className="text-blue-400 h-8 w-8" />
-          <h2 className="text-3xl font-bold text-gray-100">Tech Stack & Data</h2>
+          <h2 className="text-3xl font-bold text-gray-100">技术栈与数据</h2>
         </div>
 
         <div className="grid gap-4">
           <StackItem
             title="Finnhub"
-            desc="Real-time quotes, technical indicators, and market news."
+            desc="实时行情、技术指标与市场新闻。"
             url="https://finnhub.io"
           />
           <StackItem
             title="ConvertKit (Kit)"
-            desc="High-volume newsletter broadcasts and user tagging."
+            desc="大批量新闻通讯广播与用户标签。"
             url="https://kit.com"
           />
           <StackItem
             title="MongoDB Atlas"
-            desc="Distributed data on AWS. SRV-bypassed connection for maximum reliability."
+            desc="基于 AWS 的分布式数据。绕过 SRV 的连接实现最大可靠性。"
             url="https://mongodb.com"
           />
         </div>

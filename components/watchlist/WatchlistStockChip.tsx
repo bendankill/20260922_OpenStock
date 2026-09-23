@@ -52,7 +52,7 @@ export default function WatchlistStockChip({ symbol, userId }: WatchlistStockChi
             <button
                 onClick={handleBellClick}
                 className="text-gray-400 hover:text-yellow-400 transition-colors p-0.5"
-                title="Create Alert"
+                title="创建提醒"
                 disabled={loadingPrice}
             >
                 {loadingPrice ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Bell className="w-3.5 h-3.5" />}
@@ -60,7 +60,7 @@ export default function WatchlistStockChip({ symbol, userId }: WatchlistStockChi
 
             {/* Remove Button */}
             <form action={handleRemove}>
-                <button type="submit" className="text-gray-400 hover:text-red-400 transition-colors p-0.5" title="Remove">
+                <button type="submit" className="text-gray-400 hover:text-red-400 transition-colors p-0.5" title="移除">
                     <X className="w-3.5 h-3.5" />
                 </button>
             </form>
