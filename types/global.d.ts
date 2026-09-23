@@ -159,6 +159,8 @@ declare global {
         category: string;
         related: string;
         image?: string;
+        translatedHeadline?: string;
+        translatedSummary?: string;
     };
 
     type WatchlistNewsProps = {

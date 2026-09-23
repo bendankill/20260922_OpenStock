@@ -43,10 +43,10 @@ export default function NewsGrid({ news }: NewsGridProps) {
                                 <ExternalLink className="w-3 h-3 text-gray-600 group-hover:text-gray-400" />
                             </div>
                             <h3 className="text-sm font-semibold text-gray-200 mb-2 line-clamp-2 group-hover:text-blue-400 transition-colors">
-                                {item.headline}
+                                {item.translatedHeadline ?? item.headline}
                             </h3>
                             <p className="text-xs text-gray-500 line-clamp-3 mb-4 flex-1">
-                                {item.summary}
+                                {item.translatedSummary ?? item.summary}
                             </p>
                             <div className="flex items-center justify-between text-[10px] text-gray-600 mt-auto">
                                 <span>{item.source}</span>

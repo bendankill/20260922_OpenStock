@@ -1,13 +1,25 @@
 import TradingViewWidget from "@/components/TradingViewWidget";
+import HomeNews from "@/components/news/HomeNews";
+import { getNews } from "@/lib/actions/finnhub.actions";
+import { translateNewsBatch } from "@/lib/news/translate-news";
 import {
     HEATMAP_WIDGET_CONFIG,
     MARKET_DATA_WIDGET_CONFIG,
-    MARKET_OVERVIEW_WIDGET_CONFIG,
-    TOP_STORIES_WIDGET_CONFIG
+    MARKET_OVERVIEW_WIDGET_CONFIG
 } from "@/lib/constants";
 
-const Home = () => {
+const Home = async () => {
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
+
+    // 新闻是可选增强：Finnhub / Gemini 任一失败都降级为空或英文原文，绝不影响页面主体
+    let news: MarketNewsArticle[] = [];
+    try {
+        news = await getNews();
+        news = await translateNewsBatch(news);
+    } catch (error) {
+        console.error('首页新闻加载失败，已降级:', error);
+        news = [];
+    }
 
     return (
         <div className="flex min-h-screen home-wrapper">
@@ -39,24 +51,10 @@ const Home = () => {
                     />
                 </div>
                 <div className="h-full md:col-span-1 xl:col-span-1">
-                    <TradingViewWidget
-                        scriptUrl={`${scriptUrl}timeline.js`}
-                        config={TOP_STORIES_WIDGET_CONFIG}
-                        height={600}
-                    />
+                    <HomeNews news={news} />
                 </div>
 
             </section>
-            <div className="w-full flex flex-col items-center justify-center mt-8 gap-4">
-                <h2 className="text-xl font-semibold text-gray-200">在 Peerlist 上给我们点赞 🚀</h2>
-                <a href="https://peerlist.io/ravixalgorithm/project/openstock" target="_blank" rel="noreferrer">
-                    <img
-                        src="https://peerlist.io/api/v1/projects/embed/PRJH8OED7MBL9MGB9HRMKAKLM66KNN?showUpvote=true&theme=light"
-                        alt="OpenStock"
-                        style={{ width: "auto", height: "72px" }}
-                    />
-                </a>
-            </div>
         </div>
     )
 }

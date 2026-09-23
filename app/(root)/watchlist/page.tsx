@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { getUserWatchlist } from '@/lib/actions/watchlist.actions';
 import { getUserAlerts } from '@/lib/actions/alert.actions';
 import { getNews, searchStocks } from '@/lib/actions/finnhub.actions';
+import { translateNewsBatch } from '@/lib/news/translate-news';
 import WatchlistManager from '@/components/watchlist/WatchlistManager';
 import AlertsPanel from '@/components/watchlist/AlertsPanel';
 import NewsGrid from '@/components/watchlist/NewsGrid';
@@ -32,6 +33,7 @@ export default async function WatchlistPage() {
     let news: MarketNewsArticle[] = [];
     try {
         news = watchlistSymbols.length > 0 ? await getNews(watchlistSymbols) : await getNews();
+        news = await translateNewsBatch(news);
     } catch (error) {
         console.error('自选股页新闻加载失败，已降级为空:', error);
         news = [];

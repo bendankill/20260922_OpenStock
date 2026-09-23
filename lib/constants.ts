@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
+    { href: '/watchlist', label: '自选股' },
     { href: '/', label: '市场概览' },
     { href: '/search', label: '搜索' },
-    { href: '/watchlist', label: '自选股' },
     { href: '/api-docs', label: 'API 文档' },
 ];
 
@@ -93,16 +93,6 @@ export const HEATMAP_WIDGET_CONFIG = {
     height: '600',
 };
 
-export const TOP_STORIES_WIDGET_CONFIG = {
-    displayMode: 'regular',
-    feedMode: 'market',
-    colorTheme: 'dark',
-    isTransparent: true,
-    locale: 'zh_CN',
-    market: 'stock',
-    width: '100%',
-    height: '600',
-};
 
 export const MARKET_DATA_WIDGET_CONFIG = {
     title: '股票',
