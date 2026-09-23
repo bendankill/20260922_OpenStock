@@ -17,12 +17,6 @@ RUN npm install
 # Copy all project files
 COPY . .
 
-# Build-time env: Next.js page data collection loads the auth module,
-# which connects to MongoDB at import time. Runtime env comes from
-# docker-compose env_file and overrides these values.
-ARG MONGODB_URI
-ENV MONGODB_URI=${MONGODB_URI}
-
 # Build the Next.js application
 RUN npm run build
 # Or if using pnpm:

@@ -4,8 +4,6 @@ services:
       context: .
       extra_hosts:
         - "mongodb:host-gateway"
-      args:
-        - MONGODB_URI=${MONGODB_URI}
     ports:
       - "3000:3000"
     env_file:

@@ -1,12 +1,13 @@
 'use server';
 
-import { auth } from "@/lib/better-auth/auth";
+import { getAuth } from "@/lib/better-auth/auth";
 import { headers } from "next/headers";
 import {
     generateInternalEmail,
     PASSWORD_MAX_LENGTH,
     PASSWORD_MIN_LENGTH,
     validateAccount,
+    validatePassword,
 } from "@/lib/auth/account";
 
 const AUTH_ERROR_MESSAGES: Record<string, string> = {
@@ -35,21 +36,21 @@ export const signUpWithAccount = async ({ account, password }: SignUpFormData) =
         if (!validation.ok) {
             return { success: false, error: validation.error };
         }
-        if (password.length < PASSWORD_MIN_LENGTH) {
-            return { success: false, error: `密码长度至少为 ${PASSWORD_MIN_LENGTH} 位` };
-        }
-        if (password.length > PASSWORD_MAX_LENGTH) {
-            return { success: false, error: `密码长度最多为 ${PASSWORD_MAX_LENGTH} 位` };
+        const passwordCheck = validatePassword(password);
+        if (!passwordCheck.ok) {
+            return { success: false, error: passwordCheck.error };
         }
 
         const internalEmail = generateInternalEmail(validation.normalized);
 
+        const auth = await getAuth();
         const response = await auth.api.signUpEmail({
             body: {
                 email: internalEmail,
                 password,
                 name: validation.display,
-                username: validation.account,
+                // 登录唯一性判断永远使用归一化后的值
+                username: validation.normalized,
                 displayUsername: validation.display,
             },
         });
@@ -68,6 +69,7 @@ export const signInWithAccount = async ({ account, password }: SignInFormData) =
             return { success: false, error: validation.error };
         }
 
+        const auth = await getAuth();
         const response = await auth.api.signInUsername({
             body: {
                 username: validation.normalized,
@@ -102,6 +104,7 @@ export const signInWithAccount = async ({ account, password }: SignInFormData) =
 
 export const signOut = async () => {
     try {
+        const auth = await getAuth();
         await auth.api.signOut({ headers: await headers() });
     } catch (error) {
         console.error("[signOut] failed:", error);

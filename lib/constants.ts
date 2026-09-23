@@ -328,11 +328,11 @@ export const ACCOUNT_VALIDATION = {
 };
 
 export const PASSWORD_RULES = [
-    { label: '密码至少 8 位', test: (pw: string) => pw.length >= 8 },
+    { label: '密码至少 2 位', test: (pw: string) => pw.length >= 2 },
 ] as const;
 
 export const PASSWORD_VALIDATION = {
     required: '请输入密码',
-    minLength: { value: 8, message: '密码至少 8 位' },
+    minLength: { value: 2, message: '密码至少 2 位' },
     maxLength: { value: 128, message: '密码最多 128 位' },
 };

@@ -79,7 +79,7 @@ export default function SearchCommand({ renderAs = 'button', label = '添加股�
                         <CommandEmpty className="search-list-empty">加载中...</CommandEmpty>
                     ) : displayStocks?.length === 0 ? (
                         <div className="search-list-indicator">
-                            {isSearchMode ? '未找到结果' : '暂无股票数据'}
+                            {isSearchMode ? '未找到结果' : '暂无股票数据（请确认 Finnhub API Key 已配置）'}
                         </div>
                     ) : (
                         <ul>

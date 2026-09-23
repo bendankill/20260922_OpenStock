@@ -16,7 +16,7 @@ import { createHash } from "node:crypto";
 
 const ACCOUNT_MIN_LENGTH = 2;
 const ACCOUNT_MAX_LENGTH = 32;
-const PASSWORD_MIN_LENGTH = 8;
+const PASSWORD_MIN_LENGTH = 2;
 const PASSWORD_MAX_LENGTH = 128;
 const ACCOUNT_PATTERN = /^[\p{Script=Han}A-Za-z0-9]+$/u;
 

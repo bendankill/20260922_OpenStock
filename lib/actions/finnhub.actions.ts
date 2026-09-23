@@ -119,7 +119,9 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
         const range = getDateRange(5);
         const token = NEXT_PUBLIC_FINNHUB_API_KEY;
         if (!token) {
-            throw new Error('FINNHUB API key is not configured');
+            // 新闻是可选功能：无 Key 时降级为空，不阻断页面
+            console.warn('FINNHUB API key is not configured, news disabled');
+            return [];
         }
         const cleanSymbols = (symbols || [])
             .map((s) => s?.trim().toUpperCase())
@@ -185,8 +187,9 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
         const formatted = unique.slice(0, maxArticles).map((a, idx) => formatArticle(a, false, undefined, idx));
         return formatted;
     } catch (err) {
+        // 新闻失败绝不影响页面主体 render
         console.error('getNews error:', err);
-        throw new Error('Failed to fetch news');
+        return [];
     }
 }
 
@@ -194,8 +197,8 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
     try {
         const token = NEXT_PUBLIC_FINNHUB_API_KEY;
         if (!token) {
-            // If no token, log and return empty to avoid throwing per requirements
-            console.error('Error in stock search:', new Error('FINNHUB API key is not configured'));
+            // 无 Key 时降级为空，不阻断页面
+            console.warn('FINNHUB API key is not configured, stock search disabled');
             return [];
         }
 

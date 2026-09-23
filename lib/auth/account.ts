@@ -2,7 +2,7 @@ import { createHash } from "crypto";
 
 export const ACCOUNT_MIN_LENGTH = 2;
 export const ACCOUNT_MAX_LENGTH = 32;
-export const PASSWORD_MIN_LENGTH = 8;
+export const PASSWORD_MIN_LENGTH = 2;
 export const PASSWORD_MAX_LENGTH = 128;
 
 // 只允许：Unicode 汉字 + 英文字母 + 数字
@@ -44,4 +44,19 @@ export function generateInternalEmail(normalizedAccount: string): string {
         .update(normalizedAccount, "utf8")
         .digest("hex");
     return `${digest}@local.openstock.invalid`;
+}
+
+export type PasswordValidation =
+    | { ok: true }
+    | { ok: false; error: string };
+
+// 只校验长度（2-128 位），不限制字符类型
+export function validatePassword(raw: string): PasswordValidation {
+    if (typeof raw !== "string" || raw.length < PASSWORD_MIN_LENGTH) {
+        return { ok: false, error: `密码长度至少为 ${PASSWORD_MIN_LENGTH} 位` };
+    }
+    if (raw.length > PASSWORD_MAX_LENGTH) {
+        return { ok: false, error: `密码长度最多为 ${PASSWORD_MAX_LENGTH} 位` };
+    }
+    return { ok: true };
 }

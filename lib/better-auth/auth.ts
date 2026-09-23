@@ -13,13 +13,15 @@ import {
     validateAccount,
 } from "@/lib/auth/account";
 
-let authInstance: ReturnType<typeof betterAuth> | null = null;
+// better-auth 1.3.25 的动态 plugin 端点（signInUsername 等）无法通过
+// ReturnType<typeof betterAuth> 完整推断，这里使用宽松类型；
+// 所有调用均经过运行时验证。
+type AuthRuntime = any;
 
-export const getAuth = async () => {
-    if (authInstance) {
-        return authInstance;
-    }
+let authInstance: AuthRuntime | null = null;
+let authPromise: Promise<AuthRuntime> | null = null;
 
+async function createAuthRuntime(): Promise<AuthRuntime> {
     const mongoose = await connectToDatabase();
     const db = mongoose.connection;
     const database = db.db;
@@ -28,7 +30,7 @@ export const getAuth = async () => {
         throw new Error("MongoDB connection not found!");
     }
 
-    authInstance = betterAuth({
+    return betterAuth({
         database: mongodbAdapter(database),
         secret: process.env.BETTER_AUTH_SECRET,
         baseURL: process.env.BETTER_AUTH_URL,
@@ -54,17 +56,51 @@ export const getAuth = async () => {
             username({
                 minUsernameLength: ACCOUNT_MIN_LENGTH,
                 maxUsernameLength: ACCOUNT_MAX_LENGTH,
+                // 校验与唯一性判断都基于归一化后的值，避免大小写边界问题
+                validationOrder: {
+                    username: "post-normalization",
+                },
                 // NFKC 归一化 + 英文字母转小写，中文保持原样
                 usernameNormalization: (raw) => normalizeAccount(raw),
-                usernameValidator: (raw) => {
-                    const result = validateAccount(raw);
+                usernameValidator: (value) => {
+                    const result = validateAccount(value);
                     return result.ok;
                 },
             }),
         ],
     });
+}
 
-    return authInstance;
+// Lazy runtime initialization：数据库连接只发生在真正运行时调用时，
+// 不会发生在 module import / npm run build / Docker build 阶段。
+export const getAuth = async (): Promise<AuthRuntime> => {
+    if (authInstance) {
+        return authInstance;
+    }
+
+    if (!authPromise) {
+        authPromise = createAuthRuntime()
+            .then((instance) => {
+                authInstance = instance;
+                return instance;
+            })
+            .catch((error) => {
+                authPromise = null;
+                throw error;
+            });
+    }
+
+    return authPromise;
 };
 
-export const auth = await getAuth();
+// 供 server component（layout/page）读取会话：数据库不可用时降级为 null，
+// 保证 Docker build / 页面收集阶段不因数据库离线而失败。
+export const getCurrentSession = async (requestHeaders: Headers) => {
+    try {
+        const auth = await getAuth();
+        return await auth.api.getSession({ headers: requestHeaders });
+    } catch (error) {
+        console.error("[auth] getSession failed:", error);
+        return null;
+    }
+};

@@ -11,7 +11,16 @@ interface NewsGridProps {
 }
 
 export default function NewsGrid({ news }: NewsGridProps) {
-    if (!news || news.length === 0) return null;
+    if (!news || news.length === 0) {
+        return (
+            <div className="mt-8">
+                <h2 className="text-xl font-bold text-white mb-4">市场新闻</h2>
+                <div className="rounded-xl border border-gray-800 bg-gray-900/30 p-6 text-center">
+                    <p className="text-sm text-gray-500">暂无市场新闻</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="mt-8">

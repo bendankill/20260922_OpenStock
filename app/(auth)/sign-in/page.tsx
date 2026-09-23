@@ -71,7 +71,7 @@ const SignIn = () => {
                     type="password"
                     register={register}
                     error={errors.password}
-                    validation={{ required: '请输入密码', minLength: 8, maxLength: 128 }}
+                    validation={{ required: '请输入密码', minLength: 2, maxLength: 128 }}
                 />
 
                 <div className="flex justify-end">

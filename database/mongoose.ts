@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
 // FIX: Set Google DNS and force IPv4 to avoid querySrv ECONNREFUSED
 import dns from 'dns';
 try {
@@ -29,6 +27,8 @@ if (!cached) {
 }
 
 export const connectToDatabase = async () => {
+    const MONGODB_URI = process.env.MONGODB_URI;
+
     if (!MONGODB_URI) {
         throw new Error("MongoDB URI is missing");
     }
@@ -47,6 +47,7 @@ export const connectToDatabase = async () => {
         throw err;
     }
 
-    console.log(`MongoDB Connected ${MONGODB_URI} in ${process.env.NODE_ENV}`);
+    // 不输出 URI（含用户名/密码），只输出非敏感信息
+    console.log(`MongoDB connected: database=${mongoose.connection.name}, env=${process.env.NODE_ENV ?? 'unknown'}`);
     return cached.conn;
 }
