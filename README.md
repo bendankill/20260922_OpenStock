@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <b>New from Open Dev Society:</b> <a href="https://github.com/Open-Dev-Society/kitbash"><b>kitbash</b></a>. Before you build, find out which parts already exist on GitHub. Borrow them, adapt them, or write the rest.
+  <b>Open Dev Society 新作品：</b> <a href="https://github.com/Open-Dev-Society/kitbash"><b>kitbash</b></a>。动手构建之前，先看看 GitHub 上已有哪些现成部分——借用、改造，剩下的再自己写。
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
   <a href="#" target="_blank">
     <img src="./public/assets/images/dashboard.png" alt="Project Banner" />
   </a>
-  © Open Dev Society. This project is licensed under AGPL-3.0; if you modify, redistribute, or deploy it (including as a web service), you must release your source code under the same license and credit the original authors.
+  © Open Dev Society。本项目采用 AGPL-3.0 许可证；如修改、再分发或部署本项目（包括以网络服务形式），必须以相同许可证开源你的源代码，并注明原作者。
   <br />
   <br/>
 
@@ -46,181 +46,181 @@
 
 # OpenStock
 
-OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.
+OpenStock 是昂贵市场平台的开源替代品。跟踪实时价格、设置个性化提醒、探索详尽的公司洞察——以开放方式构建，为所有人服务，永远免费。
 
-Note: OpenStock is community-built and not a brokerage. Market data may be delayed based on provider rules and your configuration. Nothing here is financial advice.
+注意：OpenStock 由社区构建，并非券商。市场数据可能因提供商规则和你的配置而延迟。此处任何内容均不构成投资建议。
 
-## 📋 Table of Contents
+## 📋 目录
 
-1. ✨ [Introduction](#introduction)
-2. 🌍 [Open Dev Society Manifesto](#manifesto)
-3. ⚙️ [Tech Stack](#tech-stack)
-4. 🔋 [Features](#features)
-5. 🤸 [Quick Start](#quick-start)
-6. 🐳 [Docker Setup](#docker-setup)
-7. 🔐 [Environment Variables](#environment-variables)
-8. 🧱 [Project Structure](#project-structure)
-9. 📡 [Data & Integrations](#data--integrations)
-10. 🌍 [Market Support](#market-support)
-11. 🧪 [Scripts & Tooling](#scripts--tooling)
-12. 🤝 [Contributing](#contributing)
-13. 🛡️ [Security](#security)
-14. 📜 [License](#license)
-15. 🙏 [Acknowledgements](#acknowledgements)
+1. ✨ [简介](#introduction)
+2. 🌍 [Open Dev Society 宣言](#manifesto)
+3. ⚙️ [技术栈](#tech-stack)
+4. 🔋 [功能特性](#features)
+5. 🤸 [快速开始](#quick-start)
+6. 🐳 [Docker 部署](#docker-setup)
+7. 🔐 [环境变量](#environment-variables)
+8. 🧱 [项目结构](#project-structure)
+9. 📡 [数据与集成](#data--integrations)
+10. 🌍 [市场支持](#market-support)
+11. 🧪 [脚本与工具](#scripts--tooling)
+12. 🤝 [参与贡献](#contributing)
+13. 🛡️ [安全](#security)
+14. 📜 [许可证](#license)
+15. 🙏 [致谢](#acknowledgements)
 
-## ✨ Introduction <a name="introduction"></a>
+## ✨ 简介 <a name="introduction"></a>
 
-OpenStock is a modern stock market app powered by Next.js (App Router), shadcn/ui and Tailwind CSS, Better Auth for authentication, MongoDB for persistence, Finnhub for market data, and TradingView widgets for charts and market views.
+OpenStock 是一款现代化的股票市场应用，由 Next.js（App Router）、shadcn/ui 与 Tailwind CSS 驱动；Better Auth 负责身份认证，MongoDB 负责持久化，Finnhub 提供市场数据，TradingView 组件提供图表与市场视图。
 
-## 🌍 Open Dev Society Manifesto <a name="manifesto"></a>
+## 🌍 Open Dev Society 宣言 <a name="manifesto"></a>
 
-We live in a world where knowledge is hidden behind paywalls. Where tools are locked in subscriptions. Where information is twisted by bias. Where newcomers are told they’re not “good enough” to build.
+我们生活在一个知识被付费墙挡住的世界。工具被订阅锁死。信息被偏见扭曲。新人被告知他们"还不够格"去构建。
 
-We believe there’s a better way.
+我们相信有更好的方式。
 
-- Our Belief: Technology should belong to everyone. Knowledge should be open, free, and accessible. Communities should welcome newcomers with trust, not gatekeeping.
-- Our Mission: Build free, open-source projects that make a real difference:
-    - Tools that professionals and students can use without barriers.
-    - Knowledge platforms where learning is free, forever.
-    - Communities where every beginner is guided, not judged.
-    - Resources that run on trust, not profit.
-- Our Promise: We will never lock knowledge. We will never charge for access. We will never trade trust for money. We run on transparency, donations, and the strength of our community.
-- Our Call: If you’ve ever felt you didn’t belong, struggled to find free resources, or wanted to build something meaningful — you belong here.
+- 我们的信念：技术应当属于所有人。知识应当开放、免费、可及。社区应当以信任欢迎新人，而不是设门槛。
+- 我们的使命：构建真正有用的免费开源项目：
+    - 专业人士和学生都能无障碍使用的工具。
+    - 学习永远免费的知识平台。
+    - 每个初学者都能得到引导而非评判的社区。
+    - 靠信任而非利润运转的资源。
+- 我们的承诺：我们永不封锁知识。永不收取访问费用。永不用信任换取金钱。我们靠透明、捐赠和社区的力量运转。
+- 我们的号召：如果你曾觉得自己格格不入，为找不到免费资源而挣扎，或者想构建一些有意义的东西——这里属于你。
 
-Because the future belongs to those who build it openly.
+因为未来属于那些以开放方式构建它的人。
 
-## ⚙️ Tech Stack <a name="tech-stack"></a>
+## ⚙️ 技术栈 <a name="tech-stack"></a>
 
-Core
-- Next.js 15 (App Router), React 19
+核心
+- Next.js 15（App Router）、React 19
 - TypeScript
-- Tailwind CSS v4 (via @tailwindcss/postcss)
-- shadcn/ui + Radix UI primitives
-- Lucide icons
+- Tailwind CSS v4（通过 @tailwindcss/postcss）
+- shadcn/ui + Radix UI 基础组件
+- Lucide 图标
 
-Auth & Data
-- Better Auth (email/password) with MongoDB adapter
+认证与数据
+- Better Auth（邮箱/密码）+ MongoDB adapter
 - MongoDB + Mongoose
-- Finnhub API for symbols, profiles, and market news
-- TradingView embeddable widgets
+- Finnhub API（代码查询、公司资料与市场新闻）
+- TradingView 可嵌入组件
 
-Automation & Comms
-- Inngest (events, cron, AI inference via Gemini)
-- Nodemailer (Gmail transport)
-- next-themes, cmdk (command palette), react-hook-form
+自动化与通信
+- Inngest（事件、cron、基于 Gemini 的 AI 推理）
+- Nodemailer（Gmail transport）
+- next-themes、cmdk（命令面板）、react-hook-form
 
-Language composition
-- TypeScript (~93.4%), CSS (~6%), JavaScript (~0.6%)
+语言构成
+- TypeScript（约 93.4%）、CSS（约 6%）、JavaScript（约 0.6%）
 
-## 🔋 Features <a name="features"></a>
+## 🔋 功能特性 <a name="features"></a>
 
-- Authentication
-    - Email/password auth with Better Auth + MongoDB adapter
-    - Protected routes enforced via Next.js middleware
-- Global search and Command + K palette
-    - Fast stock search backed by Finnhub
-    - Popular stocks when idle; debounced querying
-- Watchlist
-    - Per-user watchlist stored in MongoDB (unique symbol per user)
-- Stock details
-    - TradingView symbol info, candlestick/advanced charts, baseline, technicals
-    - Company profile and financials widgets
-    - Optional cross-source sentiment insights for Reddit, X.com, news, and Polymarket
-- Market overview
-    - Heatmap, quotes, and top stories (TradingView widgets)
-- Personalized onboarding
-    - Collects country, investment goals, risk tolerance, preferred industry
-- Email & automation
-    - AI-personalized welcome email (Gemini via Inngest)
-    - Weekly news summary email (cron) sent as a Kit broadcast
-- Polished UI
-    - shadcn/ui components, Radix primitives, Tailwind v4 design tokens
-    - Dark theme by default
-- Keyboard shortcut
-    - Cmd/Ctrl + K for quick actions/search
+- 身份认证
+    - 基于 Better Auth + MongoDB adapter 的邮箱/密码认证
+    - 通过 Next.js middleware 强制保护路由
+- 全局搜索与 Command + K 面板
+    - 由 Finnhub 支撑的快速股票搜索
+    - 空闲时展示热门股票；查询带防抖
+- 自选列表
+    - 按用户存储于 MongoDB 的自选列表（每个用户每只股票唯一）
+- 股票详情
+    - TradingView 股票信息、K 线/高级图表、基线、技术指标
+    - 公司资料与财务组件
+    - 可选的多源情绪洞察（Reddit、X.com、新闻、Polymarket）
+- 市场总览
+    - 热力图、行情与头条（TradingView 组件）
+- 个性化引导
+    - 收集国家、投资目标、风险偏好、偏好行业
+- 邮件与自动化
+    - AI 个性化欢迎邮件（Gemini via Inngest）
+    - 每周新闻摘要邮件（cron，以 Kit 广播发送）
+- 精致 UI
+    - shadcn/ui 组件、Radix 基础组件、Tailwind v4 设计令牌
+    - 默认深色主题
+- 快捷键
+    - Cmd/Ctrl + K 快速操作/搜索
 
-## 🤸 Quick Start <a name="quick-start"></a>
+## 🤸 快速开始 <a name="quick-start"></a>
 
-Prerequisites
-- Node.js 20+ and pnpm or npm
-- MongoDB connection string (MongoDB Atlas or local via Docker Compose)
-- Finnhub API key (free tier supported; real-time may require paid)
-- Gmail account for email (or update Nodemailer transport)
-- Optional: Google Gemini API key (for AI-generated welcome intros)
+前置要求
+- Node.js 20+ 与 pnpm 或 npm
+- MongoDB 连接串（MongoDB Atlas，或通过 Docker Compose 本地运行）
+- Finnhub API key（支持免费额度；实时数据可能需要付费）
+- 用于邮件的 Gmail 账号（或更换 Nodemailer transport）
+- 可选：Google Gemini API key（用于 AI 生成欢迎语）
 
-Clone and install
+克隆并安装
 ```bash
 git clone https://github.com/Open-Dev-Society/OpenStock.git
 cd OpenStock
 
-# choose one:
+# 二选一：
 pnpm install
-# or
+# 或
 npm install
 ```
 
-Configure environment
-- Create a `.env` file (see [Environment Variables](#environment-variables)).
-- Verify DB connectivity:
+配置环境
+- 创建 `.env` 文件（参见 [环境变量](#environment-variables)）。
+- 验证数据库连通性：
 ```bash
 pnpm test:db
-# or
+# 或
 npm run test:db
 ```
 
-Run development
+运行开发
 ```bash
-# Next.js dev (Turbopack)
+# Next.js 开发模式（Turbopack）
 pnpm dev
-# or
+# 或
 npm run dev
 ```
 
-Run Inngest locally (workflows, cron, AI)
+本地运行 Inngest（工作流、cron、AI）
 ```bash
 npx inngest-cli@latest dev
 ```
 
-Build & start (production)
+构建与启动（生产）
 ```bash
 pnpm build && pnpm start
-# or
+# 或
 npm run build && npm start
 ```
 
-Open http://localhost:3000 to view the app.
+打开 http://localhost:3000 查看应用。
 
-## 🐳 Docker Setup <a name="docker-setup"></a>
+## 🐳 Docker 部署 <a name="docker-setup"></a>
 
-You can run OpenStock and MongoDB easily with Docker Compose.
+你可以用 Docker Compose 轻松运行 OpenStock 和 MongoDB。
 
-1) Ensure Docker and Docker Compose are installed.
+1) 确保已安装 Docker 与 Docker Compose。
 
-2) docker-compose.yml includes two services:
-- openstock (this app)
-- mongodb (MongoDB database with a persistent volume)
+2) docker-compose.yml 包含两个服务：
+- openstock（本应用）
+- mongodb（带持久化卷的 MongoDB 数据库）
 
-3) Create your `.env` (see examples below). For the Docker setup, use a local connection string like:
+3) 创建你的 `.env`（见下方示例）。Docker 部署请使用本地连接串，例如：
 ```env
 MONGODB_URI=mongodb://root:example@mongodb:27017/openstock?authSource=admin
 ```
 
-4) Start the stack:
+4) 启动整套服务：
 ```bash
-# from the repository root
+# 在仓库根目录执行
 docker compose up -d mongodb && docker compose up -d --build
 ```
 
-5) Access the app:
-- App: http://localhost:3000
-- MongoDB is available inside the Docker network at host mongodb:27017
+5) 访问应用：
+- 应用：http://localhost:3000
+- MongoDB 在 Docker 网络内以主机名 mongodb:27017 提供访问
 
-Notes
-- The app service depends_on the mongodb service.
-- Credentials are defined in Compose for the MongoDB root user; authSource=admin is required on the connection string for root.
-- Data persists across restarts via the docker volume.
+注意事项
+- 应用服务 depends_on mongodb 服务。
+- MongoDB root 用户的凭据定义在 Compose 中；root 用户的连接串必须带 authSource=admin。
+- 数据通过 Docker 卷在重启后持久保留。
 
-Optional: Example MongoDB service definition used in this project:
+可选：本项目使用的 MongoDB 服务定义示例：
 ```yaml
 services:
   mongodb:
@@ -244,16 +244,16 @@ volumes:
   mongo-data:
 ```
 
-## 🔐 Environment Variables <a name="environment-variables"></a>
+## 🔐 环境变量 <a name="environment-variables"></a>
 
-Create `.env` at the project root. Choose either a hosted MongoDB (Atlas) URI or the local Docker URI.
+在项目根目录创建 `.env`。可选用托管 MongoDB（Atlas）URI 或本地 Docker URI。
 
-Hosted (MongoDB Atlas):
+托管（MongoDB Atlas）：
 ```env
-# Core
+# 核心
 NODE_ENV=development
 
-# Database (Atlas)
+# 数据库（Atlas）
 MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
 
 # Better Auth
@@ -261,40 +261,40 @@ BETTER_AUTH_SECRET=your_better_auth_secret
 BETTER_AUTH_URL=http://localhost:3000
 
 # Finnhub
-# Note: NEXT_PUBLIC_FINNHUB_API_KEY is required for Vercel deployment
+# 注意：NEXT_PUBLIC_FINNHUB_API_KEY 是 Vercel 部署所必需的
 NEXT_PUBLIC_FINNHUB_API_KEY=your_finnhub_key
 FINNHUB_BASE_URL=https://finnhub.io/api/v1
 
-# Sentiment insights (optional)
+# 情绪洞察（可选）
 ADANOS_API_KEY=your_adanos_api_key
 # ADANOS_API_BASE_URL=https://api.adanos.org
 
-# AI Provider (optional, default: "gemini")
-# Supported: "gemini", "minimax", "siray"
+# AI 提供商（可选，默认："gemini"）
+# 支持："gemini"、"minimax"、"siray"
 # AI_PROVIDER=gemini
 
 # Gemini
 GEMINI_API_KEY=your_gemini_api_key
 
-# MiniMax (optional, used when AI_PROVIDER=minimax or as fallback)
-# Get your key at https://platform.minimaxi.com
+# MiniMax（可选，当 AI_PROVIDER=minimax 或作为回退时使用）
+# 密钥获取地址：https://platform.minimaxi.com
 # MINIMAX_API_KEY=your_minimax_api_key
 
-# Inngest Signing Key (required for Vercel deployment)
-# Get this from your Inngest dashboard: https://app.inngest.com/env/settings/keys
+# Inngest 签名密钥（Vercel 部署必需）
+# 从 Inngest 控制台获取：https://app.inngest.com/env/settings/keys
 INNGEST_SIGNING_KEY=your_inngest_signing_key
 
-# Email (Nodemailer via Gmail; consider App Passwords if 2FA)
+# 邮件（通过 Gmail 的 Nodemailer；启用两步验证时请考虑使用应用专用密码）
 NODEMAILER_EMAIL=youraddress@gmail.com
 NODEMAILER_PASSWORD=your_gmail_app_password
 ```
 
-Local (Docker Compose) MongoDB:
+本地（Docker Compose）MongoDB：
 ```env
-# Core
+# 核心
 NODE_ENV=development
 
-# Database (Docker)
+# 数据库（Docker）
 MONGODB_URI=mongodb://root:example@mongodb:27017/openstock?authSource=admin
 
 # Better Auth
@@ -302,41 +302,41 @@ BETTER_AUTH_SECRET=your_better_auth_secret
 BETTER_AUTH_URL=http://localhost:3000
 
 # Finnhub
-# Note: NEXT_PUBLIC_FINNHUB_API_KEY is required for Vercel deployment
+# 注意：NEXT_PUBLIC_FINNHUB_API_KEY 是 Vercel 部署所必需的
 NEXT_PUBLIC_FINNHUB_API_KEY=your_finnhub_key
 FINNHUB_BASE_URL=https://finnhub.io/api/v1
 
-# Sentiment insights (optional)
+# 情绪洞察（可选）
 ADANOS_API_KEY=your_adanos_api_key
 # ADANOS_API_BASE_URL=https://api.adanos.org
 
-# AI Provider (optional, default: "gemini")
-# Supported: "gemini", "minimax", "siray"
+# AI 提供商（可选，默认："gemini"）
+# 支持："gemini"、"minimax"、"siray"
 # AI_PROVIDER=gemini
 
 # Gemini
 GEMINI_API_KEY=your_gemini_api_key
 
-# MiniMax (optional, used when AI_PROVIDER=minimax or as fallback)
-# Get your key at https://platform.minimaxi.com
+# MiniMax（可选，当 AI_PROVIDER=minimax 或作为回退时使用）
+# 密钥获取地址：https://platform.minimaxi.com
 # MINIMAX_API_KEY=your_minimax_api_key
 
-# Inngest Signing Key (required for Vercel deployment)
-# Get this from your Inngest dashboard: https://app.inngest.com/env/settings/keys
+# Inngest 签名密钥（Vercel 部署必需）
+# 从 Inngest 控制台获取：https://app.inngest.com/env/settings/keys
 INNGEST_SIGNING_KEY=your_inngest_signing_key
 
-# Email (Nodemailer via Gmail; consider App Passwords if 2FA)
+# 邮件（通过 Gmail 的 Nodemailer；启用两步验证时请考虑使用应用专用密码）
 NODEMAILER_EMAIL=youraddress@gmail.com
 NODEMAILER_PASSWORD=your_gmail_app_password
 ```
 
-Notes
-- Keep private keys server-side whenever possible.
-- If using `NEXT_PUBLIC_` variables, remember they are exposed to the browser.
-- In production, prefer a dedicated SMTP provider over a personal Gmail.
-- Do not hardcode secrets in the Dockerfile; use `.env` and Compose.
+注意事项
+- 尽可能将私钥保留在服务端。
+- 使用 `NEXT_PUBLIC_` 变量时请记住：它们会暴露到浏览器。
+- 生产环境建议使用专用 SMTP 服务商，而非个人 Gmail。
+- 不要在 Dockerfile 中硬编码密钥；使用 `.env` 与 Compose。
 
-## 🧱 Project Structure <a name="project-structure"></a>
+## 🧱 项目结构 <a name="project-structure"></a>
 
 ```
 app/
@@ -353,146 +353,142 @@ app/
   globals.css
   layout.tsx
 components/
-  ui/…          # shadcn/radix primitives (button, dialog, command, input, etc.)
-  forms/…       # InputField, SelectField, CountrySelectField, FooterLink
+  ui/…          # shadcn/radix 基础组件（button、dialog、command、input 等）
+  forms/…       # InputField、SelectField、CountrySelectField、FooterLink
   Header.tsx, Footer.tsx, SearchCommand.tsx, WatchlistButton.tsx, …
 database/
   models/watchlist.model.ts
   mongoose.ts
 lib/
-  actions/…     # server actions (auth, finnhub, user, watchlist)
+  actions/…     # 服务端 actions（auth、finnhub、user、watchlist）
   better-auth/…
-  inngest/…     # client, functions, prompts
-  nodemailer/…  # transporter, email templates
+  inngest/…     # client、functions、prompts
+  nodemailer/…  # transporter、邮件模板
   constants.ts, utils.ts
 scripts/
   test-db.mjs
 types/
   global.d.ts
-next.config.ts          # i.ibb.co image domain allowlist
-postcss.config.mjs      # Tailwind v4 postcss setup
-components.json         # shadcn config
-public/assets/images/   # logos and screenshots
+next.config.ts          # i.ibb.co 图片域名白名单
+postcss.config.mjs      # Tailwind v4 postcss 配置
+components.json         # shadcn 配置
+public/assets/images/   # Logo 与截图
 ```
 
-## 📡 Data & Integrations <a name="data--integrations"></a>
+## 📡 数据与集成 <a name="data--integrations"></a>
 
 - Finnhub
-    - Stock search, company profiles, and market news.
-    - Set `NEXT_PUBLIC_FINNHUB_API_KEY` and `FINNHUB_BASE_URL` (default: https://finnhub.io/api/v1).
-    - Free tiers may return delayed quotes; respect rate limits and terms.
+    - 股票搜索、公司资料与市场新闻。
+    - 设置 `NEXT_PUBLIC_FINNHUB_API_KEY` 与 `FINNHUB_BASE_URL`（默认：https://finnhub.io/api/v1）。
+    - 免费额度可能返回延迟行情；请遵守速率限制与条款。
 
-- Adanos sentiment insights (optional)
-    - Structured stock sentiment snapshots across Reddit, X.com, news, and Polymarket.
-    - Set `ADANOS_API_KEY`; optionally override the API host with `ADANOS_API_BASE_URL`.
-    - Used only for the stock detail sentiment card and does not replace Finnhub or TradingView.
+- Adanos 情绪洞察（可选）
+    - 跨 Reddit、X.com、新闻与 Polymarket 的结构化股票情绪快照。
+    - 设置 `ADANOS_API_KEY`；可通过 `ADANOS_API_BASE_URL` 覆盖 API 主机。
+    - 仅用于股票详情的情绪卡片，不替代 Finnhub 或 TradingView。
 
 - TradingView
-    - Embeddable widgets used for charts, heatmap, quotes, and timelines.
-    - External images from `i.ibb.co` are allowlisted in `next.config.ts`.
+    - 用于图表、热力图、行情与时间线的可嵌入组件。
+    - `next.config.ts` 中已放行来自 `i.ibb.co` 的外部图片。
 
 - Better Auth + MongoDB
-    - Email/password with MongoDB adapter.
-    - Session validation via middleware; most routes are protected, with public exceptions for `sign-in`, `sign-up`, assets and Next internals.
+    - 邮箱/密码 + MongoDB adapter。
+    - 通过 middleware 校验会话；大部分路由受保护，`sign-in`、`sign-up`、静态资源与 Next 内部路径除外（公开）。
 
 - Inngest
-    - Workflows:
-        - `app/user.created` → AI-personalized Welcome Email
-        - Cron `0 9 * * 1` → Weekly News Summary (every Monday at 9 AM, Kit broadcast)
-    - Local dev: `npx inngest-cli@latest dev`.
+    - 工作流：
+        - `app/user.created` → AI 个性化欢迎邮件
+        - Cron `0 9 * * 1` → 每周新闻摘要（每周一上午 9 点，Kit 广播）
+    - 本地开发：`npx inngest-cli@latest dev`。
 
-- Email (Nodemailer)
-    - Gmail transport. Update credentials or switch to your SMTP provider.
-    - Templates for welcome and news summary emails.
+- 邮件（Nodemailer）
+    - Gmail transport。更新凭据或换成你的 SMTP 服务商。
+    - 欢迎邮件与新闻摘要邮件模板。
 
+## 🌍 市场支持 <a name="market-support"></a>
 
-## 🌍 Market Support <a name="market-support"></a>
+OpenStock 支持 **30+ 国际证券交易所**，包括 NSE、LSE、TSX 等。不过请注意基于我们数据提供商的重要限制。
 
-OpenStock supports **30+ international stock exchanges** including NSE, LSE, TSX, and more. However, please be aware of important limitations based on our data providers.
+**快速事实**：
+- ✅ Finnhub 支持大多数全球交易所
+- ⚠️ TradingView 免费版对新兴市场（印度 NSE、越南等）有限制
+- 📊 免费版非美股实时数据延迟 15 分钟以上
 
-**Quick Facts**:
-- ✅ Finnhub supports most global exchanges
-- ⚠️ TradingView free tier has restrictions on emerging markets (India NSE, Vietnam, etc.)
-- 📊 Real-time data for non-US stocks is delayed by 15+ minutes on free tier
+**参见 [MARKET_SUPPORT.md](./MARKET_SUPPORT.md) 了解**：
+- 支持的交易所完整列表
+- 已知限制与变通方案
+- 为何出现 "This symbol is only available on TradingView"（该代码仅可在 TradingView 使用）
+- 如何升级以扩大市场覆盖范围
+- 计划中的未来改进
 
-**See [MARKET_SUPPORT.md](./MARKET_SUPPORT.md) for**:
-- Complete list of supported exchanges
-- Known limitations and workarounds
-- Why "This symbol is only available on TradingView" appears
-- How to upgrade for broader market coverage
-- Future improvements planned
+关于最新的支持代码与交易所，参见 [Finnhub 交易所列表](https://finnhub.io/docs/api/symbol-lookup)。
 
-For the latest supported symbols and exchanges, see [Finnhub's exchange list](https://finnhub.io/docs/api/symbol-lookup).
+## 🧪 脚本与工具 <a name="scripts--tooling"></a>
 
+Package 脚本
+- `dev`：Turbopack 模式 Next.js 开发服务器
+- `build`：生产构建（Turbopack）
+- `start`：运行生产服务器
+- `lint`：ESLint
+- `test:db`：校验数据库连通性
 
-## 🧪 Scripts & Tooling <a name="scripts--tooling"></a>
+开发者体验
+- TypeScript strict 模式
+- Tailwind CSS v4（无需单独的 tailwind.config）
+- shadcn/ui 组件 + Radix 基础组件
+- cmdk 命令面板、next-themes、lucide-react 图标
 
-Package scripts
-- `dev`: Next.js dev server with Turbopack
-- `build`: Production build (Turbopack)
-- `start`: Run production server
-- `lint`: ESLint
-- `test:db`: Validate DB connectivity
+## 🤝 参与贡献 <a name="contributing"></a>
 
-Developer experience
-- TypeScript strict mode
-- Tailwind CSS v4 (no separate tailwind.config needed)
-- shadcn/ui components with Radix primitives
-- cmdk command palette, next-themes, lucide-react icons
+这里属于你。无论你是学生、自学开发者还是资深工程师——欢迎贡献。
 
-## 🤝 Contributing <a name="contributing"></a>
+- 通过 issue 讨论想法与 bug
+- 留意 "good first issue" 或 "help wanted" 标签
+- 保持 PR 聚焦；UI 改动请附截图
+- 友善待人、引导新人、不设门槛——这是 ODS 之道
 
-You belong here. Whether you’re a student, a self-taught dev, or a seasoned engineer — contributions are welcome.
+## 🛡️ 安全 <a name="security"></a>
 
-- Open an issue to discuss ideas and bugs
-- Look for “good first issue” or “help wanted”
-- Keep PRs focused; add screenshots for UI changes
-- Be kind, guide beginners, no gatekeeping — that’s the ODS way
+如果你发现漏洞：
+- 不要公开发 issue
+- 发送邮件：<a href="mailto:opendevsociety@cc.cc">opendevsociety@cc.cc</a>
+- 我们会协调负责任的披露并迅速修复
 
-## 🛡️ Security <a name="security"></a>
+## 📜 许可证 <a name="license"></a>
 
-If you discover a vulnerability:
-- Do not open a public issue
-- Email: <a href="mailto:opendevsociety@cc.cc">opendevsociety@cc.cc</a>
-- We'll coordinate responsible disclosure and patch swiftly
+OpenStock 现在是、将来也始终对所有人免费开放。本项目采用 AGPL-3.0 许可证——详见 LICENSE 文件。
 
-## 📜 License <a name="license"></a>
+## 🙏 致谢 <a name="acknowledgements"></a>
 
-OpenStock is and will remain free and open for everyone. This project is licensed under the AGPL-3.0 License - see the LICENSE file for details.
+- 感谢 Finnhub 提供可及的市场数据
+- 感谢 TradingView 提供可嵌入的市场组件
+- 感谢 shadcn/ui、Radix UI、Tailwind CSS、Next.js 社区
+- 感谢 Inngest 提供可靠的后台任务与工作流
+- 感谢 Better Auth 提供简单而安全的认证
+- 感谢所有让开放工具成为可能的贡献者
 
-## 🙏 Acknowledgements <a name="acknowledgements"></a>
+——以开放方式构建，为所有人服务，永远免费。Open Dev Society。
 
-- Finnhub for accessible market data
-- TradingView for embeddable market widgets
-- shadcn/ui, Radix UI, Tailwind CSS, Next.js community
-- Inngest for dependable background jobs and workflows
-- Better Auth for simple and secure authentication
-- All contributors who make open tools possible
+> © Open Dev Society。本项目采用 AGPL-3.0 许可证；如修改、再分发或部署本项目（包括以网络服务形式），必须以相同许可证开源你的源代码，并注明原作者。
 
-— Built openly, for everyone, forever free. Open Dev Society.
+## 尊敬的贡献者
+- [ravixalgorithm](https://github.com/ravixalgorithm) - 从零开发了整个应用，包括身份认证、UI 设计、API 与 AI 集成以及部署。
+- [Priyanshuu00007](https://github.com/Priyanshuu00007) - 设计了官方 OpenStock Logo，并为项目的视觉形象做出贡献。
+- [chinnsenn](https://github.com/chinnsenn) - 为仓库配置了 Docker，保证了顺畅的开发和部署流程。
+- [koevoet1221](https://github.com/koevoet1221) - 解决了 MongoDB 的 Docker 构建问题，提升了项目的整体稳定性与可靠性。
+- [ettoreciolli1](https://github.com/ettoreciolli1) - 更新了 Readme
 
-> © Open Dev Society. This project is licensed under AGPL-3.0; if you modify, redistribute, or deploy it (including as a web service), you must release your source code under the same license and credit the original authors.
-
-## Our Honourable Contributors
-- [ravixalgorithm](https://github.com/ravixalgorithm) - Developed the entire application from the ground up, including authentication, UI design, API and AI integration, and deployment.
-- [Priyanshuu00007](https://github.com/Priyanshuu00007) - Created the official OpenStock logo and contributed to the project’s visual identity.
-- [chinnsenn](https://github.com/chinnsenn) - Set up Docker configuration for the repository, ensuring a smooth development and deployment process.
-- [koevoet1221](https://github.com/koevoet1221) - Resolved MongoDB Docker build issues, improving the project’s overall stability and reliability.
-- [ettoreciolli1](https://github.com/ettoreciolli1) - updated Readme
-
-
-
-## ❤️ Partners & Backers
+## ❤️ 合作伙伴与支持者
 
 <a href="https://www.siray.ai/">
   <img src="public/assets/icons/siray.svg" alt="Siray.ai Logo" width="100" />
 </a>
 
-**[Siray.ai](https://www.siray.ai/)** — The robust AI infrastructure backing OpenStock. Siray.ai ensures our market insights never sleep.
+**[Siray.ai](https://www.siray.ai/)** ——为 OpenStock 提供支撑的强大 AI 基础设施。Siray.ai 确保我们的市场洞察永不掉线。
 
-## Special thanks
-Huge thanks to [Adrian Hajdin (JavaScript Mastery)](https://github.com/adrianhajdin) — his excellent Stock Market App tutorial was instrumental in building OpenStock for the open-source community under the Open Dev Society.
+## 特别感谢
+特别感谢 [Adrian Hajdin（JavaScript Mastery）](https://github.com/adrianhajdin)——他出色的股票市场应用教程对 Open Dev Society 旗下 OpenStock 的开源建设起到了关键作用。
 
-GitHub: [adrianhajdin](https://github.com/adrianhajdin)
-YouTube tutorial: [Stock Market App Tutorial](https://www.youtube.com/watch?v=gu4pafNCXng)
-YouTube channel: [JavaScript Mastery](https://www.youtube.com/@javascriptmastery)
+GitHub：[adrianhajdin](https://github.com/adrianhajdin)
+YouTube 教程：[Stock Market App Tutorial](https://www.youtube.com/watch?v=gu4pafNCXng)
+YouTube 频道：[JavaScript Mastery](https://www.youtube.com/@javascriptmastery)
